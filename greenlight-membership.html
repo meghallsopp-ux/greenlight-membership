@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EverFIT Membership | Green Light Physical Therapy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #1a3a2a;
+    --green-mid: #2d5c3f;
+    --green-light: #4a8c5c;
+    --green-pale: #c8e6d0;
+    --cream: #f7f3ee;
+    --warm-white: #faf8f5;
+    --charcoal: #1e1e1e;
+    --mid-gray: #5a5a5a;
+    --light-gray: #e8e4df;
+    --gold: #c4923a;
+    --gold-light: #e8c07a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    background: rgba(247, 243, 238, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--light-gray);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--green-dark);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-cta {
+    background: var(--green-dark);
+    color: var(--cream) !important;
+    padding: 10px 24px;
+    border-radius: 2px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--green-mid); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 24px 80px;
+    position: relative;
+    background: var(--green-dark);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 60%, rgba(74,140,92,0.3) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(196,146,58,0.15) 0%, transparent 50%);
+  }
+  .hero-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.1;
+    max-width: 900px;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .hero-sub {
+    font-size: 1.2rem;
+    color: rgba(247,243,238,0.75);
+    max-width: 600px;
+    margin-bottom: 48px;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+  .hero-bullets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 52px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+  .hero-bullet {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--cream);
+    font-size: 0.95rem;
+  }
+  .hero-bullet::before {
+    content: '✦';
+    color: var(--gold-light);
+    font-size: 0.7rem;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--green-dark);
+    padding: 18px 44px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.2s;
+    opacity: 0;
+    animation: fadeUp 0.8s 1s forwards;
+  }
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(196,146,58,0.3);
+  }
+  .hero-note {
+    font-size: 0.8rem;
+    color: rgba(247,243,238,0.5);
+    margin-top: 16px;
+    opacity: 0;
+    animation: fadeUp 0.8s 1.1s forwards;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 24px; }
+  .container { max-width: 860px; margin: 0 auto; }
+  .container-wide { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green-light);
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    color: var(--green-dark);
+  }
+  h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--green-dark);
+    margin-bottom: 12px;
+  }
+
+  p { color: var(--mid-gray); margin-bottom: 20px; font-size: 1.05rem; }
+  p strong { color: var(--charcoal); }
+
+  /* DIVIDER */
+  .divider {
+    width: 60px;
+    height: 3px;
+    background: var(--gold);
+    margin-bottom: 40px;
+  }
+
+  /* INTRO SECTION */
+  .intro {
+    background: var(--cream);
+    text-align: center;
+  }
+  .intro .container { max-width: 720px; }
+  .intro-pull {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+    color: var(--green-dark);
+    line-height: 1.5;
+    margin-bottom: 32px;
+    font-style: italic;
+  }
+
+  /* PROBLEM SECTION */
+  .problem {
+    background: var(--warm-white);
+  }
+  .problem-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .problem-questions {
+    list-style: none;
+    padding: 0;
+  }
+  .problem-questions li {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--light-gray);
+    color: var(--mid-gray);
+    font-size: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .problem-questions li::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--green-pale);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  /* DARK BAND */
+  .dark-band {
+    background: var(--green-dark);
+    padding: 80px 24px;
+    text-align: center;
+  }
+  .dark-band h2 { color: var(--cream); }
+  .dark-band p { color: rgba(247,243,238,0.7); }
+  .dark-band .divider { background: var(--gold); margin: 0 auto 40px; }
+  .dark-band .intro-pull { color: var(--gold-light); }
+
+  /* WHAT YOU MEASURE */
+  .measures {
+    background: var(--cream);
+  }
+  .measures-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2px;
+    margin-top: 60px;
+  }
+  .measure-card {
+    background: var(--warm-white);
+    padding: 40px 32px;
+    border-top: 3px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .measure-card:hover { border-color: var(--gold); }
+  .measure-icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
+  }
+  .measure-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+  .measure-card p { font-size: 0.9rem; margin-bottom: 0; }
+
+  /* QUOTE PULL */
+  .quote-band {
+    background: var(--green-mid);
+    padding: 80px 24px;
+    text-align: center;
+  }
+  .big-quote {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    color: var(--cream);
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+    line-height: 1.5;
+  }
+  .big-quote::before { content: '\201C'; }
+  .big-quote::after { content: '\201D'; }
+
+  /* IS THIS FOR YOU */
+  .fit-section { background: var(--warm-white); }
+  .fit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 60px;
+  }
+  .fit-box {
+    padding: 40px 36px;
+    border-radius: 2px;
+  }
+  .fit-box.yes { background: var(--green-dark); }
+  .fit-box.no { background: var(--light-gray); }
+  .fit-box h3 { font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px; }
+  .fit-box.yes h3 { color: var(--gold-light); }
+  .fit-box.no h3 { color: var(--mid-gray); }
+  .fit-list { list-style: none; }
+  .fit-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.95rem;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .fit-box.no .fit-list li { border-bottom-color: rgba(0,0,0,0.08); color: var(--mid-gray); }
+  .fit-box.yes .fit-list li { color: rgba(247,243,238,0.85); }
+  .check { flex-shrink: 0; color: var(--gold-light); font-size: 1rem; margin-top: 2px; }
+  .fit-box.no .check { color: #999; }
+
+  /* PRICING */
+  .pricing {
+    background: var(--cream);
+    text-align: center;
+  }
+  .pricing .divider { margin: 0 auto 24px; }
+  .pricing-intro { max-width: 580px; margin: 0 auto 64px; font-size: 1.1rem; }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  .pricing-grid.four-col {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .price-card {
+    background: var(--warm-white);
+    padding: 40px 28px;
+    border: 1px solid var(--light-gray);
+    border-radius: 2px;
+    text-align: left;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+  .price-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(26,58,42,0.12);
+  }
+  .price-card.featured {
+    background: var(--green-dark);
+    border-color: var(--gold);
+  }
+  .price-card.featured h3,
+  .price-card.featured p,
+  .price-card.featured .price-desc,
+  .price-card.featured .price-includes-title,
+  .price-card.featured .price-list li { color: rgba(247,243,238,0.85); }
+  .price-card.featured h3 { color: var(--gold-light); }
+  .price-card.featured .big-price { color: var(--cream); }
+  .featured-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--green-dark);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .tier-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--green-light);
+    margin-bottom: 8px;
+  }
+  .price-card.featured .tier-label { color: var(--gold-light); }
+  .price-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--light-gray);
+  }
+  .price-card.featured h3 { border-bottom-color: rgba(255,255,255,0.1); }
+  .big-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--green-dark);
+    line-height: 1;
+    margin: 20px 0 4px;
+  }
+  .price-period {
+    font-size: 0.8rem;
+    color: var(--mid-gray);
+    margin-bottom: 20px;
+  }
+  .price-card.featured .price-period { color: rgba(247,243,238,0.5); }
+  .price-desc {
+    font-size: 0.9rem;
+    color: var(--mid-gray);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .price-includes-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+  }
+  .price-list {
+    list-style: none;
+    margin-bottom: 32px;
+  }
+  .price-list li {
+    font-size: 0.85rem;
+    color: var(--mid-gray);
+    padding: 6px 0;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .price-list li::before {
+    content: '→';
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .price-card.featured .price-list li::before { color: var(--gold-light); }
+  .btn-tier {
+    display: block;
+    text-align: center;
+    padding: 14px 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .btn-tier-outline {
+    border: 2px solid var(--green-dark);
+    color: var(--green-dark);
+    background: transparent;
+  }
+  .btn-tier-outline:hover {
+    background: var(--green-dark);
+    color: var(--cream);
+  }
+  .btn-tier-solid {
+    background: var(--gold);
+    color: var(--green-dark);
+    border: 2px solid var(--gold);
+  }
+  .btn-tier-solid:hover {
+    background: var(--gold-light);
+    border-color: var(--gold-light);
+  }
+  .pricing-note {
+    font-size: 0.9rem;
+    color: var(--mid-gray);
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid var(--light-gray);
+  }
+
+  /* FAQ */
+  .faq { background: var(--warm-white); }
+  .faq-list { margin-top: 48px; }
+  .faq-item {
+    border-bottom: 1px solid var(--light-gray);
+    padding: 28px 0;
+  }
+  .faq-q {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--green-dark);
+    margin-bottom: 12px;
+    cursor: pointer;
+  }
+  .faq-a { font-size: 0.95rem; color: var(--mid-gray); }
+
+  /* STATS */
+  .stats-band {
+    background: var(--green-dark);
+    padding: 80px 24px;
+    text-align: center;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-size: 0.85rem;
+    color: rgba(247,243,238,0.65);
+    line-height: 1.5;
+  }
+
+  /* FINAL CTA */
+  .final-cta {
+    background: var(--cream);
+    text-align: center;
+    padding: 120px 24px;
+  }
+  .final-cta h2 { max-width: 700px; margin: 0 auto 24px; }
+  .final-cta p { max-width: 500px; margin: 0 auto 48px; }
+  .final-cta .divider { margin: 0 auto 40px; }
+
+  /* CONTACT FORM */
+  .contact { background: var(--green-dark); padding: 80px 24px; text-align: center; }
+  .contact h2 { color: var(--cream); }
+  .contact .divider { background: var(--gold); margin: 0 auto 40px; }
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 600px;
+    margin: 0 auto 16px;
+  }
+  .form-input {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--cream);
+    padding: 14px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-input::placeholder { color: rgba(247,243,238,0.4); }
+  .form-input:focus { border-color: var(--gold); }
+  textarea.form-input {
+    grid-column: 1 / -1;
+    resize: vertical;
+    min-height: 100px;
+  }
+  .form-submit {
+    background: var(--gold);
+    color: var(--green-dark);
+    border: none;
+    padding: 16px 40px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s;
+    margin-top: 8px;
+  }
+  .form-submit:hover { background: var(--gold-light); }
+  .contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-top: 48px;
+    flex-wrap: wrap;
+  }
+  .contact-info a {
+    color: rgba(247,243,238,0.6);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  .contact-info a:hover { color: var(--gold-light); }
+
+  /* FOOTER */
+  footer {
+    background: #111;
+    padding: 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  footer p { font-size: 0.8rem; color: #666; margin: 0; }
+  footer a { color: #666; text-decoration: none; font-size: 0.8rem; }
+  footer a:hover { color: var(--gold); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .problem-layout,
+    .fit-grid,
+    .pricing-grid,
+    .pricing-grid.four-col,
+    .stats-grid,
+    .form-grid { grid-template-columns: 1fr; }
+    .fit-grid { gap: 24px; }
+    .pricing-grid.four-col { grid-template-columns: 1fr 1fr; }
+    footer { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Green<span>Light</span> PT</a>
+  <a href="tel:603-852-4682" class="nav-cta">Call (603) 852-4682</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">Foundational Assessments & EverFIT Membership</p>
+  <h1>Your Body Is Either Declining by Accident — or Improving by <em>Design</em></h1>
+  <p class="hero-sub">A physical performance and longevity program for adults 30–90+, built by a Doctor of Physical Therapy, driven by data.</p>
+  <div class="hero-bullets">
+    <span class="hero-bullet">Objective Strength Testing</span>
+    <span class="hero-bullet">VO₂ Max Analysis</span>
+    <span class="hero-bullet">Balance & Stability</span>
+    <span class="hero-bullet">Personalized Longevity Blueprint</span>
+  </div>
+  <a href="tel:603-852-4682" class="btn-primary">Schedule Your Free Discovery Call</a>
+  <p class="hero-note">A 15-minute clarity conversation to determine if this program is right for you.</p>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="container">
+    <p class="section-label">The Problem</p>
+    <div class="divider"></div>
+    <p class="intro-pull">Most people don't notice their physical decline until it's already limiting them.</p>
+    <p>Strength plateaus and slowly fades. Small coordination losses compound into instability. Mobility tightens. Endurance drops. Confidence shrinks.</p>
+    <p>But for those who <strong>measure and adjust over time</strong>, the trajectory is different. They stay strong. They stay capable. They stay independent.</p>
+    <p style="color: var(--green-dark); font-weight: 500;">The difference isn't luck. It's measurement, guidance, and consistent recalibration.</p>
+  </div>
+</section>
+
+<!-- PROBLEM — THE ONE HEALTH QUESTION -->
+<section class="dark-band">
+  <div class="container">
+    <p class="section-label" style="color: var(--gold-light);">When It Matters Most</p>
+    <div class="divider"></div>
+    <h2>You Can Have a Hundred Problems — Until You Have a <em>Health Problem</em></h2>
+    <p>Then you only have one.</p>
+    <br>
+    <p class="intro-pull" style="font-style: normal; font-size: 1.1rem; color: rgba(247,243,238,0.75); margin-bottom: 0;">Will you be strong enough to walk through the park with your grandchildren?<br>
+    Will you carry groceries without back pain? Climb stairs confidently at 80?<br>
+    Will you be able to stay out of a nursing home?</p>
+    <br>
+    <p style="color: rgba(247,243,238,0.6);">Annual physicals check cholesterol. Lab panels assess organ function. Wearables track steps.<br>
+    <strong style="color: var(--cream);">But none of them answer the question that actually matters.</strong></p>
+  </div>
+</section>
+
+<!-- FEAR / DATA CLARITY -->
+<section class="problem">
+  <div class="container">
+    <p class="section-label">The Fear of the Unknown</p>
+    <div class="divider"></div>
+    <div class="problem-layout">
+      <div>
+        <h2>Uncertainty Creates Fear. <em>Data Creates Clarity.</em></h2>
+        <p>Many people live with quiet anxiety about their physical future. Not because they're weak — but because they don't have a way to measure what's actually happening in their body.</p>
+        <p>And clarity creates control.</p>
+        <p>Nothing in life is guaranteed — but muscle is one of the few systems we can meaningfully influence at any age. <strong>Effort → adaptation → improvement.</strong></p>
+        <p>At nine or ninety, your body responds to the work you give it.</p>
+      </div>
+      <ul class="problem-questions">
+        <li>Am I getting weaker?</li>
+        <li>Is this normal for my age?</li>
+        <li>Am I doing enough?</li>
+        <li>Is this pain the start of something bigger?</li>
+        <li>Will my body hold up for the things I love?</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET — ASSESSMENT OVERVIEW -->
+<section class="measures">
+  <div class="container-wide">
+    <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+      <p class="section-label">What We Measure</p>
+      <div class="divider" style="margin: 0 auto 24px;"></div>
+      <h2>Your Comprehensive <em>Physical Capacity Map</em></h2>
+      <p>This isn't a workout. It's a systematic evaluation across every domain that determines how well you'll function in your next decade — and your last.</p>
+    </div>
+    <div class="measures-grid">
+      <div class="measure-card">
+        <div class="measure-icon">💪</div>
+        <h3>Total-Body Strength Score</h3>
+        <p>Measured objectively down to the gram of force using dynamometry. Identifies hidden asymmetries, underperforming stabilizers, and early decline patterns before they become pain.</p>
+      </div>
+      <div class="measure-card">
+        <div class="measure-icon">🔄</div>
+        <h3>Joint Mobility & Mechanical Efficiency</h3>
+        <p>Spinal and extremity range of motion in key joints that influence walking durability, lifting resilience, rotational capacity, and long-term joint health.</p>
+      </div>
+      <div class="measure-card">
+        <div class="measure-icon">❤️</div>
+        <h3>VO₂ Max Testing</h3>
+        <p>The single strongest predictor of longevity and cardiovascular resilience — measured directly, not estimated, giving you a true picture of your aerobic capacity.</p>
+      </div>
+      <div class="measure-card">
+        <div class="measure-icon">⚖️</div>
+        <h3>Balance & Stability</h3>
+        <p>Falls rarely happen without warning. We evaluate neuromuscular control patterns — not just whether you can stand on one foot. The goal is confidence and control.</p>
+      </div>
+      <div class="measure-card">
+        <div class="measure-icon">🏃</div>
+        <h3>Movement Quality</h3>
+        <p>How efficiently your body performs the tasks you actually care about. Poor movement patterns increase joint stress and accumulate over years into limitations.</p>
+      </div>
+      <div class="measure-card">
+        <div class="measure-icon">📈</div>
+        <h3>Longitudinal Tracking</h3>
+        <p>This is not a one-time snapshot. Your metrics become a baseline — tracked over time so improvement is measurable and decline is detected early, before it limits you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE BAND -->
+<section class="quote-band">
+  <p class="big-quote">You cannot control your genetics. But you can control your muscular system. You can measure it, train it, and improve it — not for vanity, but for the ability to live fully in your next ten years, and your last ten years.</p>
+</section>
+
+<!-- IS THIS FOR YOU -->
+<section class="fit-section">
+  <div class="container-wide">
+    <div style="text-align: center; max-width: 700px; margin: 0 auto 60px;">
+      <p class="section-label">Who This Is For</p>
+      <div class="divider" style="margin: 0 auto 24px;"></div>
+      <h2>Is This the <em>Right Program</em> for You?</h2>
+      <p>If you're looking for a short-term workout plan, this is not the right program. If you're thinking about your physical independence 10–20 years from now, it likely is.</p>
+    </div>
+    <div class="fit-grid">
+      <div class="fit-box yes">
+        <h3>✦ This Is For You If…</h3>
+        <ul class="fit-list">
+          <li><span class="check">✓</span> You want to remain strong and independent into your later decades</li>
+          <li><span class="check">✓</span> You prefer prevention over waiting for something to break</li>
+          <li><span class="check">✓</span> You value data and measurement over guesswork</li>
+          <li><span class="check">✓</span> You care about how well you will move — not just how long you will live</li>
+          <li><span class="check">✓</span> You're willing to make a consistent investment in your physical future</li>
+        </ul>
+      </div>
+      <div class="fit-box no">
+        <h3>✗ This Is NOT For You If…</h3>
+        <ul class="fit-list">
+          <li><span class="check">✗</span> You're only looking for a quick workout program or generic fitness advice</li>
+          <li><span class="check">✗</span> You're not interested in objective measurement or tracking over time</li>
+          <li><span class="check">✗</span> You're not ready to think strategically about your long-term physical health</li>
+          <li><span class="check">✗</span> You believe "just staying active" is a sufficient long-term plan</li>
+          <li><span class="check">✗</span> You prefer to react to decline rather than prevent it</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container-wide">
+    <p class="section-label">Choose Your Level</p>
+    <div class="divider"></div>
+    <h2>Your <em>Investment</em></h2>
+    <p class="pricing-intro">Most individuals begin with the Foundational Screening. From there, we determine together whether structured membership is appropriate based on your goals and findings.</p>
+
+    <!-- One-time tiers -->
+    <div class="pricing-grid" style="margin-bottom: 32px;">
+      <div class="price-card">
+        <p class="tier-label">Tier 1 — One-Time</p>
+        <h3>Foundational Screening</h3>
+        <p class="price-desc">A focused 45-minute screening designed to give you a snapshot of your key strength and mobility markers.</p>
+        <p class="big-price">$200</p>
+        <p class="price-period">one-time assessment</p>
+        <p class="price-includes-title">Includes</p>
+        <ul class="price-list">
+          <li>Targeted strength testing</li>
+          <li>Range of motion snapshot</li>
+          <li>3–4 priority metrics</li>
+          <li>Brief summary and recommendations</li>
+        </ul>
+        <a href="tel:603-852-4682" class="btn-tier btn-tier-outline">Get Started</a>
+      </div>
+      <div class="price-card featured">
+        <span class="featured-badge">Most Comprehensive</span>
+        <p class="tier-label">Tier 2 — One-Time</p>
+        <h3>Advanced Performance Evaluation</h3>
+        <p class="price-desc">Our full physical capacity evaluation. 75 minutes. The clearest picture you've ever had of where you stand and where you're headed.</p>
+        <p class="big-price">$495</p>
+        <p class="price-period">one-time assessment</p>
+        <p class="price-includes-title">Includes</p>
+        <ul class="price-list">
+          <li>Expanded strength testing (all major muscle groups)</li>
+          <li>VO₂ Max testing (if appropriate)</li>
+          <li>Spinal & extremity mobility assessment</li>
+          <li>Dynamic balance testing</li>
+          <li>Functional movement analysis</li>
+          <li>Written summary report</li>
+          <li>Individualized improvement blueprint</li>
+        </ul>
+        <a href="tel:603-852-4682" class="btn-tier btn-tier-solid">Get Started</a>
+      </div>
+    </div>
+
+    <!-- Membership tiers -->
+    <div class="pricing-grid four-col">
+      <div class="price-card">
+        <p class="tier-label">Tier 3 — Membership</p>
+        <h3>Durability Blueprint</h3>
+        <p class="big-price">$150</p>
+        <p class="price-period">per month</p>
+        <p class="price-desc">Quarterly strategic oversight of your strength, mobility, and physical capacity.</p>
+        <p class="price-includes-title">Includes</p>
+        <ul class="price-list">
+          <li>4 in-person sessions/year</li>
+          <li>Member portal & tracking dashboard</li>
+          <li>Quarterly EverFIT Score summaries</li>
+          <li>Monthly check-in & accountability</li>
+          <li>Text/email support</li>
+          <li>Priority scheduling</li>
+        </ul>
+        <a href="tel:603-852-4682" class="btn-tier btn-tier-outline">Get Started</a>
+      </div>
+      <div class="price-card">
+        <p class="tier-label">Tier 4 — Membership</p>
+        <h3>Elite Performance Plan</h3>
+        <p class="big-price">$400</p>
+        <p class="price-period">per month</p>
+        <p class="price-desc">Monthly in-person advisory and progressive optimization for the highest level of oversight.</p>
+        <p class="price-includes-title">Includes</p>
+        <ul class="price-list">
+          <li>12 in-person sessions/year</li>
+          <li>Customized & progressive exercise plan</li>
+          <li>Travel exercise pack</li>
+          <li>Quarterly VO₂ Max testing</li>
+          <li>Wearables review</li>
+          <li>Quarterly activity prep (golf, hiking, skiing)</li>
+          <li>Annual performance summary report</li>
+        </ul>
+        <a href="tel:603-852-4682" class="btn-tier btn-tier-outline">Get Started</a>
+      </div>
+      <div class="price-card" style="grid-column: span 2; background: var(--light-gray);">
+        <p class="tier-label">Tier 5</p>
+        <h3>Corporate Workforce Plans</h3>
+        <p class="big-price" style="font-size: 1.8rem; color: var(--green-dark);">Contact for Pricing</p>
+        <br>
+        <p class="price-desc">Workforce physical capacity screening programs designed to reduce injury risk and improve long-term performance for your team.</p>
+        <p class="price-includes-title">Includes</p>
+        <ul class="price-list" style="columns: 2; column-gap: 24px;">
+          <li>Targeted strength testing</li>
+          <li>Range of motion snapshot</li>
+          <li>3–4 priority metrics per employee</li>
+          <li>Group summary and recommendations</li>
+        </ul>
+        <a href="mailto:admin@glptgo.com" class="btn-tier btn-tier-outline" style="max-width: 280px;">Contact Us for Details</a>
+      </div>
+    </div>
+
+    <p class="pricing-note">Not sure which tier is right for you? <strong>Most individuals begin with the Foundational Screening.</strong> Membership capacity is intentionally limited to preserve individualized oversight. Not everyone who schedules a call will be offered membership.</p>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<section class="stats-band">
+  <div class="container-wide">
+    <p class="section-label" style="color: var(--gold-light); margin-bottom: 48px;">The Impact of Proactive Physical Oversight</p>
+    <div class="stats-grid">
+      <div>
+        <p class="stat-num">30+</p>
+        <p class="stat-label">Years of age range served —<br>from 30 to 90+</p>
+      </div>
+      <div>
+        <p class="stat-num">DPT</p>
+        <p class="stat-label">Built and delivered by a<br>Doctor of Physical Therapy</p>
+      </div>
+      <div>
+        <p class="stat-num">5+</p>
+        <p class="stat-label">Performance domains<br>assessed in a single visit</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <p class="section-label">Common Questions</p>
+    <div class="divider"></div>
+    <h2>Answers to Your <em>Most Common Questions</em></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <p class="faq-q">Is this just physical therapy in a different format?</p>
+        <p class="faq-a">No. Traditional physical therapy treats problems after they interfere with your life. This advisory model is designed to prevent that moment from arriving. We measure strength, mobility, balance, and conditioning <em>before</em> decline becomes obvious — and build a structured plan to protect your independence long-term. Treatment reacts to symptoms. Advisory protects your future.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">How is this different from personal training?</p>
+        <p class="faq-a">Personal training focuses on workouts. This begins with diagnosis. Before prescribing exercise, we identify measurable weak links, asymmetries, and risk patterns through objective strength and mobility testing. Most people train what they're already good at. We identify what will matter most 10–20 years from now. Exercise is the tool. Strategy is the difference.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Why work with a Doctor of Physical Therapy?</p>
+        <p class="faq-a">This program is built and delivered by a licensed Doctor of Physical Therapy with advanced training in musculoskeletal evaluation and injury risk assessment. That clinical background allows for deeper interpretation of joint mechanics, strength imbalances, and subtle vulnerabilities that may not yet be painful — but may shape your long-term durability.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Do I need to be in pain to participate?</p>
+        <p class="faq-a">No — and in fact, it's better if you're not. Most members begin this program because they want clarity and control, not because something already hurts. The goal is confidence, durability, and capability, not crisis management.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Why is this a membership instead of occasional sessions?</p>
+        <p class="faq-a">Physical decline is gradual. Strength fades slowly. Mobility narrows quietly. Balance changes subtly. Most people don't notice until something feels unstable — or painful. A membership structure allows us to measure, retest, recalibrate, and adjust before small deficits become meaningful limitations. Just as financial advisors monitor investments over time, we monitor your physical capacity.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Is this covered by insurance?</p>
+        <p class="faq-a">No. Insurance covers medically necessary treatment after a problem occurs. This program is designed to reduce the likelihood of needing that treatment. It is a proactive investment in your long-term physical independence.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">What happens if I develop an injury?</p>
+        <p class="faq-a">Members often catch small deficits earlier, correct them faster, and recover more strategically because their baseline data is already established. You're not starting from scratch — you're adjusting an existing, personalized plan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <p class="section-label">Ready to Take the Next Step?</p>
+    <div class="divider"></div>
+    <h2>Before We Measure Anything, <em>We Talk</em></h2>
+    <p>Every individual begins with a short strategy call to determine fit, answer questions, and review your long-term physical goals. There's no commitment required.</p>
+    <a href="tel:603-852-4682" class="btn-primary" style="opacity: 1; animation: none;">Schedule Your 15-Minute Strategy Call</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="container">
+    <h2 style="color: var(--cream); margin-bottom: 8px;">Get In Touch</h2>
+    <div class="divider"></div>
+    <div class="form-grid">
+      <input type="text" class="form-input" placeholder="First Name *">
+      <input type="text" class="form-input" placeholder="Last Name">
+      <input type="email" class="form-input" placeholder="Email *">
+      <input type="tel" class="form-input" placeholder="Phone">
+      <textarea class="form-input" placeholder="Write a message…"></textarea>
+    </div>
+    <button class="form-submit">Send Message</button>
+    <div class="contact-info">
+      <a href="tel:603-852-4682">📞 (603) 852-4682</a>
+      <a href="mailto:admin@glptgo.com">✉ admin@glptgo.com</a>
+      <span style="color: rgba(247,243,238,0.4); font-size: 0.85rem;">PO Box 192, Keene, NH 03431</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Green Light Physical Therapy LLC · Keene & Cheshire County, NH</p>
+  <div style="display: flex; gap: 24px;">
+    <a href="#">Privacy Policy</a>
+    <a href="https://www.cms.gov/nosurprises" target="_blank">No Surprise Act</a>
+    <a href="#">Facebook</a>
+    <a href="#">LinkedIn</a>
+  </div>
+</footer>
+
+</body>
+</html>
